@@ -11,7 +11,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('https://parcial2backend.vercel.app/auth/login', {
+    const response = await fetch('http://localhost:4000/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

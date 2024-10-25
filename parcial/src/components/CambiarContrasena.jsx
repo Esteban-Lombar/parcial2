@@ -1,5 +1,10 @@
 import { useState } from "react";
 import '../components/styles/cambiarcontrasena.css'
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const CambiarContrasena = () => {
   const [username, setUsername] = useState("");
@@ -22,7 +27,7 @@ const CambiarContrasena = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("https://parcial2backend.vercel.app/auth/registrar", {
+    const response = await fetch("http://localhost:4000/auth/registrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,41 +44,97 @@ const CambiarContrasena = () => {
   return (
     <div className="container">
       <h2>Registrar</h2>
-
+  
       <form className="space-y-6 w-full max-w-md">
-      <div className="space-y-2">
-        <input id="nombre" type="text" value={nombre} onChange={(e) => setnombre(e.target.value)} required/>
-      </div>
-
-      <div className="space-y-2">
-        <input id="contrasena" type="text" value={contrasena} onChange={(e) => setcontrasena(e.target.value)} required/>
-      </div>
-
-      <div className="space-y-2">
-        <input id="cedula" type="text" value={cedula} onChange={(e) => setcedula(e.target.value)} required/>
-      </div>
-
-      <div className="space-y-2">
-        <input id="celular" type="text" value={celular} onChange={(e) => setcelular(e.target.value)} required/>
-      </div>
-
-      <div className="space-y-2">
-        <input id="ciudad" type="text" value={ciudad} onChange={(e) => setciudad(e.target.value)} required/>
-      </div>
-
-      <div className="space-y-2">
-        <input id="correo" type="text" value={correo} onChange={(e) => setcorreo(e.target.value)} required/>
-      </div>
-
-      <div className="space-y-2">
-        <input id="fechaNacimiento" type="text"  />
-      </div>
+        <div className="space-y-2">
+          <label htmlFor="nombre">Nombre completo</label>
+          <input
+            id="nombre"
+            type="text"
+            placeholder="Ingresa tu nombre completo"
+            value={nombre}
+            onChange={(e) => setnombre(e.target.value)}
+            required
+          />
+        </div>
+  
+        <div className="space-y-2">
+          <label htmlFor="contrasena">Contraseña</label>
+          <input
+            id="contrasena"
+            type="password"
+            placeholder="Ingresa tu contraseña"
+            value={contrasena}
+            onChange={(e) => setcontrasena(e.target.value)}
+            required
+          />
+        </div>
+  
+        <div className="space-y-2">
+          <label htmlFor="cedula">Cédula</label>
+          <input
+            id="cedula"
+            type="text"
+            placeholder="Ingresa tu cédula"
+            value={cedula}
+            onChange={(e) => setcedula(e.target.value)}
+            required
+          />
+        </div>
+  
+        <div className="space-y-2">
+          <label htmlFor="celular">Celular</label>
+          <input
+            id="celular"
+            type="text"
+            placeholder="Ingresa tu número de celular"
+            value={celular}
+            onChange={(e) => setcelular(e.target.value)}
+            required
+          />
+        </div>
+  
+        <div className="space-y-2">
+          <label htmlFor="ciudad">Ciudad</label>
+          <input
+            id="ciudad"
+            type="text"
+            placeholder="Ingresa tu ciudad"
+            value={ciudad}
+            onChange={(e) => setciudad(e.target.value)}
+            required
+          />
+        </div>
+  
+        <div className="space-y-2">
+          <label htmlFor="correo">Correo electrónico</label>
+          <input
+            id="correo"
+            type="email"
+            placeholder="Ingresa tu correo electrónico"
+            value={correo}
+            onChange={(e) => setcorreo(e.target.value)}
+            required
+          />
+        </div>
+  
+        <div className="space-y-2">
+          <label htmlFor="fechaNacimiento">Fecha de nacimiento</label>
+          <input
+            id="fechaNacimiento"
+            type="date"
+            value={fechaNacimiento}
+            onChange={(e) => setfechaNacimiento(e.target.value)}
+          />
+        </div>
+  
         <button onClick={handleCreate}>Registro</button>
-    </form>
-    
+      </form>
+  
       {message && <p>{message}</p>}
     </div>
   );
+  
 };
 
 export default CambiarContrasena;
