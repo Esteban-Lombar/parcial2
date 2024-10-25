@@ -1,6 +1,6 @@
 const express = require('express');
 const {urlencoded, json} = require('express');
-const router = require('./routes/login.routes');
+const router = require('./routes/login.routes.js');
 const cors = require('cors');
 const app = express();
 
@@ -18,6 +18,10 @@ app.use((req, res, next) => {
     );
     next();
 });
+
+app.use(cors({
+    origin: 'https://parcial2frontend.vercel.app'  // Reemplaza con la URL de tu frontend
+  }));
 
 app.use('/auth', router);
 
