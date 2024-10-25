@@ -1,6 +1,7 @@
 const express = require('express');
 const {urlencoded, json} = require('express');
 const router = require('./routes/login.routes');
+const cors = require('cors');
 const app = express();
 
 const db = require('./db/mongo');
@@ -8,6 +9,11 @@ app.use(urlencoded({extended: true}))
 app.use(json())
 
 db.dbInit().then(() => console.log('Conexion realizada'))
+app.use(cors({
+    origin: 'https://parcial2frontend.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
 app.use('/auth', router);
 
 app.listen(4000, ()=>{
