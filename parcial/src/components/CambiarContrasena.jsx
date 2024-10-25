@@ -22,7 +22,7 @@ const CambiarContrasena = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:4000/auth/registrar", {
+    const response = await fetch("https://parcial2backend.vercel.app/auth/registrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
