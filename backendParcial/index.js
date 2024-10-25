@@ -9,11 +9,16 @@ app.use(urlencoded({extended: true}))
 app.use(json())
 
 db.dbInit().then(() => console.log('Conexion realizada'))
-app.use(cors({
-    origin: 'https://parcial2frontend.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}))
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://parcial2frontend.vercel.app");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
 app.use('/auth', router);
 
 app.listen(4000, ()=>{
